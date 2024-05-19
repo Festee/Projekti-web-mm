@@ -10,7 +10,7 @@ import Maldives from "../../assets/maldives.jpg";
 
 function ImgCarousel() {
   return (
-    <div className="container">
+    <div name='carousel' className="container">
       <Carousel
         className="carousel"
         showArrows={true}

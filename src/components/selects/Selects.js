@@ -13,7 +13,7 @@ import SelectsImg from '../Selectsimg/SelectsImg'
 
 function Selects() {
   return (
-    <div className='selects'>
+    <div name='views' className='selects'>
         <div className="container">
             <SelectsImg bgImg={BoraBora} text='BoraBora' />
             <SelectsImg bgImg={BoraBora2} text='Emerlad Bay' />
