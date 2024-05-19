@@ -1,17 +1,69 @@
-.carousel{
+.container {
+    position: relative;
+  }
+  
+  .carousel {
+    position: relative;
     padding: 2rem 0;
-}
-
-.carousel img{
+  }
+  
+  .carousel img {
     height: 90vh;
     object-fit: cover;
-}
-
-.thumbs-wrapper{
+  }
+  
+  .thumbs-wrapper {
     display: none;
-}
-
-.carousel-status{
+  }
+  
+  .carousel-status {
     display: none;
-}
-
+  }
+  
+  .custom-arrow {
+    background-image: linear-gradient(45deg, var(--primary-dark) 0%, var(--primary-light) 100%); /* Ngjyra e gradientit */
+    border: none;
+    border-radius: 50%;
+    color: white;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease;
+  }
+  
+  .custom-prev {
+    left: 10px;
+  }
+  
+  .custom-next {
+    right: 10px;
+  }
+  
+  .custom-arrow:hover {
+    width: 65px;
+    height: 65px;
+    background-image: linear-gradient(45deg, var(--primary-dark) 0%, var(--primary-light) 100%); /* Ngjyra e gradientit kur është hover */
+  }
+  
+  .custom-arrow:before {
+    content: '';
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    padding: 5px;
+  }
+  
+  .custom-prev:before {
+    transform: rotate(135deg);
+  }
+  
+  .custom-next:before {
+    transform: rotate(-45deg);
+  }
+  
