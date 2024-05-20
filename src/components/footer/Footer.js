@@ -29,12 +29,11 @@ function Footer() {
                     </div>
                     <div className="right">
                         <ul>
-                            <li>Contact</li>
                             <li>Terms</li>
                             <li>Policy</li>
                             <li>Privacy</li>
                             <li>Pricing</li>
-                            <li>Contact</li>
+                            
                         </ul>
                     </div>
                 </div>

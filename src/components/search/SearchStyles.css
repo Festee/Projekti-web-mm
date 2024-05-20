@@ -1,4 +1,4 @@
-.serach{
+.search{
     width: 100%;
     padding: 3rem 0;
 }
@@ -8,6 +8,7 @@
     grid-template-columns: 2fr 1fr;
     grid-gap: 1rem;
     padding: 0 1rem;
+    margin-top: 108px;
 }
 
 .search-col-2{
@@ -16,6 +17,7 @@
     padding: 2rem 0;
     justify-content: center;
     align-items: center;
+    
 }
 
 .search .box{
@@ -31,6 +33,7 @@
     flex-direction: column;
     justify-content: center;
 }
+
 
 .promo{
     width: 100%;
