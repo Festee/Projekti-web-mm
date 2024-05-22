@@ -14,6 +14,12 @@ function App() {
     <BrowserRouter>
       <Navbar />
       <Routes>
+      <Route path="/" element={
+          <>
+            <Hero />
+            <Footer />
+          </>
+        } />
         <Route path="/home" element={
           <>
             <Hero />
