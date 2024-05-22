@@ -28,13 +28,39 @@
     color: #000;
     text-decoration: none;
     padding: 15px;
-    display: block;
-    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s, border-radius 0.3s;
+    border-radius: 8px;
 }
 
 .nav-menu li a:hover {
     background-color: #f1f1f1;
     cursor: pointer;
+    border-radius: 8px;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-item .nav-text {
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    transform: translateX(-50%);
+    background-color: #000;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    white-space: nowrap;
+    z-index: 10;
+    margin-top: 9px;
+}
+
+.nav-item:hover .nav-text {
+    display: block;
 }
 
 .hamburger {

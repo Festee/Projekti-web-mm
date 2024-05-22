@@ -3,9 +3,13 @@ import { BiSearch } from 'react-icons/bi';
 import { BsPerson } from 'react-icons/bs';
 import { HiOutlineMenuAlt4 } from "react-icons/hi";
 import { AiOutlineClose } from 'react-icons/ai';
-import { FaFacebook, FaInstagram, FaPinterest, FaTwitter, FaYoutube } from 'react-icons/fa';
+import { FaFacebook, FaInstagram, FaPinterest, FaTwitter, FaYoutube, FaHome } from 'react-icons/fa';
 import { Link as RouterLink } from 'react-router-dom';
 import './NavbarStyles.css';
+import { MdOutlineMonochromePhotos } from "react-icons/md";
+import { FaLocationDot } from "react-icons/fa6";
+import { IoCall } from "react-icons/io5";
+import { TfiLayoutSlider } from "react-icons/tfi";
 
 function Navbar() {
     const [nav, setNav] = useState(false);
@@ -44,11 +48,11 @@ function Navbar() {
                 <h2>BEACHES.</h2>
             </div>
             <ul className="nav-menu">
-                <li onMouseEnter={playAudio}><RouterLink to='/home'>Home</RouterLink></li>
-                <li onMouseEnter={playAudio}><RouterLink to='/destinations'>Destinations</RouterLink></li>
-                <li onMouseEnter={playAudio}><RouterLink to='/carousel'>Carousel</RouterLink></li>
-                <li><RouterLink to='/search'>Book</RouterLink></li>
-                <li onMouseEnter={playAudio}><RouterLink to='/selects'>Views</RouterLink></li>
+                <li onMouseEnter={playAudio} className="nav-item"><RouterLink to='/home'><FaHome /><span className="nav-text">Home</span></RouterLink></li>
+                <li onMouseEnter={playAudio} className='nav-item'><RouterLink to='/destinations'><FaLocationDot/><span className="nav-text">Destinations</span></RouterLink></li>
+                <li onMouseEnter={playAudio} className='nav-item'><RouterLink to='/carousel'><TfiLayoutSlider/><span className="nav-text">My Slider</span></RouterLink></li>
+                <li onMouseEnter={playAudio} className='nav-item'><RouterLink to='/search'><IoCall/><span className='nav-text'>Contact us</span></RouterLink></li>
+                <li onMouseEnter={playAudio} className='nav-item' ><RouterLink to='/selects'><MdOutlineMonochromePhotos/><span className="nav-text">Views</span></RouterLink></li>
             </ul>
             <div className="nav-icons">
                 <BiSearch onMouseEnter={playAudio} className="icon" style={{ marginRight: '1rem' }} />
