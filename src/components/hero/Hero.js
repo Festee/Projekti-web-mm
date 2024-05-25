@@ -25,7 +25,6 @@ function Hero() {
       <div className="overlay"></div>
       <div className="content">
         <h1>First Class Travel</h1>
-        <h2>Top 1% Locations Worldwide</h2>
         <form className="form">
           <div>
             <input

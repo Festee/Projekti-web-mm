@@ -58,7 +58,7 @@
     font-size: 1.2rem;
     font-family: 'Poppins', sans-serif;
     text-align: center; /* Shto qendrimin e tekstit në mes */
-    margin-left: 100px; /* Shto këtë për të qendruar tekstin në mes */
+    margin-left: 140px; /* Shto këtë për të qendruar tekstin në mes */
     margin-right: auto;
 
     
@@ -77,9 +77,8 @@
 }
 
 .search-results {
-    position:absolute;
-    margin-left: 30px;
-    top: calc(100% + 10px);
+    position: relative; /* Change from absolute to relative */
+    top: 10px; /*  Remove the negative margin-top */
     left: 50%;
     transform: translateX(-50%);
     width: 90%;
@@ -91,7 +90,8 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     z-index: 999;
     margin: 0 auto;
-    margin-top: -270px; 
+    margin-left: 0px;
+    /* Remove the margin-top */ 
     color: #000;
     max-height: 150px; 
     overflow-y: auto;
