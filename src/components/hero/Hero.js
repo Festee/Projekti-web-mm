@@ -34,12 +34,7 @@ function Hero() {
               value={searchTerm}
               onChange={handleSearchChange}
             />
-          </div>
-          <div>
-            <button>
-              <AiOutlineSearch className="icon" />
-            </button>
-          </div>
+          </div>        
         </form>
          {searchTerm && filteredCities.length > 0 && (
           <div className="search-results"> 

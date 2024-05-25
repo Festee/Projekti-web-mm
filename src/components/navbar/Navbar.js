@@ -10,17 +10,43 @@ import { MdOutlineMonochromePhotos } from "react-icons/md";
 import { FaLocationDot } from "react-icons/fa6";
 import { IoCall } from "react-icons/io5";
 import { TfiLayoutSlider } from "react-icons/tfi";
+import LoginModal from '../login/LogIn';
 
 function Navbar() {
     const [nav, setNav] = useState(false);
     const [isAudioAllowed, setIsAudioAllowed] = useState(false);
+    const [isLoginOpen, setIsLoginOpen] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
     const audioRef = useRef(null);
 
     const handleNav = () => setNav(!nav);
-
     const enableAudio = () => {
         setIsAudioAllowed(true);
         document.removeEventListener('click', enableAudio);
+    };
+
+    const openLoginModal = () => {
+        setIsLoginOpen(true);
+        setErrorMessage(''); 
+    };
+
+    const closeLoginModal = () => {
+        setIsLoginOpen(false);
+    };
+
+    const handleLogin = (username, password) => {
+        if (username === 'festimd' && password === '1234') {
+            setIsLoggedIn(true);
+            setIsLoginOpen(false);
+            setErrorMessage('');
+        } else {
+            setErrorMessage('USERNAME ose PASSWORD gabim');
+        }
+    };
+
+    const handleLogout = () => {
+        setIsLoggedIn(false);
     };
 
     useEffect(() => {
@@ -43,97 +69,100 @@ function Navbar() {
     };
 
     return (
-      <div name="home" className={nav ? "navbar navbar-bg" : "navbar"}>
-        <div className={nav ? "logo dark" : "logo"}>
-          <h2 style={{ color: "black" }}>
-            <RouterLink
-              to="/"
-              style={{ color: "inherit", textDecoration: "none" }}
-            >
-              NATURE.
-            </RouterLink>
-          </h2>
-        </div>
-        <ul className="nav-menu">
-          <li onMouseEnter={playAudio} className="nav-item">
-            <RouterLink to="/home">
-              <FaHome />
-              <span className="nav-text">Home</span>
-            </RouterLink>
-          </li>
-          <li onMouseEnter={playAudio} className="nav-item">
-            <RouterLink to="/destinations">
-              <FaLocationDot />
-              <span className="nav-text">Destinations</span>
-            </RouterLink>
-          </li>
-          <li onMouseEnter={playAudio} className="nav-item">
-            <RouterLink to="/carousel">
-              <TfiLayoutSlider />
-              <span className="nav-text">My Slider</span>
-            </RouterLink>
-          </li>
-          <li onMouseEnter={playAudio} className="nav-item">
-            <RouterLink to="/search">
-              <IoCall />
-              <span className="nav-text">Contact us</span>
-            </RouterLink>
-          </li>
-          <li onMouseEnter={playAudio} className="nav-item">
-            <RouterLink to="/selects">
-              <MdOutlineMonochromePhotos />
-              <span className="nav-text">Views</span>
-            </RouterLink>
-          </li>
-        </ul>
-        <div className="nav-icons">
-          <BiSearch
-            onMouseEnter={playAudio}
-            className="icon"
-            style={{ marginRight: "1rem" }}
-          />
-          <BsPerson onMouseEnter={playAudio} className="icon" />
-        </div>
-        <div className="hamburger" onClick={handleNav}>
-          {!nav ? (
-            <HiOutlineMenuAlt4 className="icon" />
-          ) : (
-            <AiOutlineClose style={{ color: "#000" }} className="icon" />
-          )}
-        </div>
-        <div className={nav ? "mobile-menu active" : "mobile-menu"}>
-          <ul className="mobile-nav">
-            <li onMouseEnter={playAudio}>
-              <RouterLink to="/home">Home</RouterLink>
-            </li>
-            <li onMouseEnter={playAudio}>
-              <RouterLink to="/destinations">Destinations</RouterLink>
-            </li>
-            <li onMouseEnter={playAudio}>
-              <RouterLink to="/carousel">Carousel</RouterLink>
-            </li>
-            <li onMouseEnter={playAudio}>
-              <RouterLink to="/search">Book</RouterLink>
-            </li>
-            <li onMouseEnter={playAudio}>
-              <RouterLink to="/selects">Views</RouterLink>
-            </li>
-          </ul>
-          <div className="mobile-menu-bottom">
-            <div className="menu-icons">
-              <button>Search</button>
-              <button>Account</button>
+        <div name="home" className={nav ? "navbar navbar-bg" : "navbar"}>
+            <div className={nav ? "logo dark" : "logo"}>
+                <h2 style={{ color: "black" }}>
+                    <RouterLink
+                        to="/"
+                        style={{ color: "inherit", textDecoration: "none" }}
+                    >
+                        NATURE.
+                    </RouterLink>
+                </h2>
             </div>
-            <div className="social-icons">
-              <FaFacebook className="icon" />
-              <FaInstagram className="icon" />
-              <FaTwitter className="icon" />
-              <FaPinterest className="icon" />
-              <FaYoutube className="icon" />
+            <ul className="nav-menu">
+                <li onMouseEnter={playAudio} className="nav-item">
+                    <RouterLink to="/home">
+                        <FaHome />
+                        <span className="nav-text">Home</span>
+                    </RouterLink>
+                </li>
+                <li onMouseEnter={playAudio} className="nav-item">
+                    <RouterLink to="/destinations">
+                        <FaLocationDot />
+                        <span className="nav-text">Destinations</span>
+                    </RouterLink>
+                </li>
+                <li onMouseEnter={playAudio} className="nav-item">
+                    <RouterLink to="/carousel">
+                        <TfiLayoutSlider />
+                        <span className="nav-text">My Slider</span>
+                    </RouterLink>
+                </li>
+                <li onMouseEnter={playAudio} className="nav-item">
+                    <RouterLink to="/search">
+                        <IoCall />
+                        <span className="nav-text">Contact us</span>
+                    </RouterLink>
+                </li>
+                <li onMouseEnter={playAudio} className="nav-item">
+                    <RouterLink to="/selects">
+                        <MdOutlineMonochromePhotos />
+                        <span className="nav-text">Views</span>
+                    </RouterLink>
+                </li>
+            </ul>
+            <div className="nav-icons">
+                {isLoggedIn ? (
+                    <div className="logged-in-message">
+                        <span>Welcome, festimd!</span>
+                        <button onClick={handleLogout} className="logout-button">Logout</button>
+                    </div>
+                ) : (
+                    <BsPerson onMouseEnter={playAudio} className="icon" id='login' onClick={openLoginModal} />
+                )}
             </div>
-          </div>
+            <div className="hamburger" onClick={handleNav}>
+                {!nav ? (
+                    <HiOutlineMenuAlt4 className="icon" />
+                ) : (
+                    <AiOutlineClose style={{ color: "#000" }} className="icon" />
+                )}
+            </div>
+            <div className={nav ? "mobile-menu active" : "mobile-menu"}>
+                <ul className="mobile-nav">
+                    <li onMouseEnter={playAudio}>
+                        <RouterLink to="/home">Home</RouterLink>
+                    </li>
+                    <li onMouseEnter={playAudio}>
+                        <RouterLink to="/destinations">Destinations</RouterLink>
+                    </li>
+                    <li onMouseEnter={playAudio}>
+                        <RouterLink to="/carousel">Carousel</RouterLink>
+                    </li>
+                    <li onMouseEnter={playAudio}>
+                        <RouterLink to="/search">Book</RouterLink>
+                    </li>
+                    <li onMouseEnter={playAudio}>
+                        <RouterLink to="/selects">Views</RouterLink>
+                    </li>
+                </ul>
+                <div className="mobile-menu-bottom">
+                    <div className="menu-icons">
+                        <button>Search</button>
+                        <button>Account</button>
+                    </div>
+                    <div className="social-icons">
+                        <FaFacebook className="icon" />
+                        <FaInstagram className="icon" />
+                        <FaTwitter className="icon" />
+                        <FaPinterest className="icon" />
+                        <FaYoutube className="icon" />
+                    </div>
+                </div>
+            </div>
+            <LoginModal isOpen={isLoginOpen} onClose={closeLoginModal} onLogin={handleLogin} errorMessage={errorMessage} />
         </div>
-      </div>
     );
 }
 
