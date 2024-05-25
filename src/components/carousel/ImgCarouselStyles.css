@@ -1,70 +1,75 @@
 .container {
-    position: relative;
-  }
-  
-  .carousel {
-    position: relative;
-    padding: 2rem 0;
-  }
-  
-  .carousel img {
-    height: 90vh;
-    object-fit: cover;
-    margin-top: 20px;
-  }
-  
-  .thumbs-wrapper {
-    display: none;
-  }
-  
-  .carousel-status {
-    display: none;
-  }
-  
-  .custom-arrow {
-    background-image: linear-gradient(45deg, var(--primary-dark) 0%, var(--primary-light) 100%); /* Ngjyra e gradientit */
-    border: none;
-    border-radius: 50%;
-    color: white;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 10;
-    transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease;
-  }
-  
-  .custom-prev {
-    left: 10px;
-  }
-  
-  .custom-next {
-    right: 10px;
-  }
-  
-  .custom-arrow:hover {
-    width: 65px;
-    height: 65px;
-    background-image: linear-gradient(45deg, var(--primary-dark) 0%, var(--primary-light) 100%); /* Ngjyra e gradientit kur është hover */
-  }
-  
-  .custom-arrow:before {
-    content: '';
-    border: solid white;
-    border-width: 0 3px 3px 0;
-    padding: 5px;
-  }
-  
-  .custom-prev:before {
-    transform: rotate(135deg);
-  }
-  
-  .custom-next:before {
-    transform: rotate(-45deg);
-  }
-  
+  position: relative;
+}
+
+.carousel {
+  position: relative;
+  padding: 2rem 0;
+}
+
+.carousel img {
+  height: 90vh;
+  object-fit: cover;
+  margin-top: 20px;
+  border-radius: 20px;
+}
+
+.thumbs-wrapper {
+  display: none;
+}
+
+.carousel-status {
+  display: none;
+}
+
+.custom-arrow {
+  background-color: rgba(0, 0, 0, 0.5); /* Sfondi i errët me transparencë */
+  border: none;
+  border-radius: 50%; /* Formë rrethore */
+  color: white;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease, background-color 0.3s ease;
+}
+
+.custom-prev {
+  left: 10px;
+}
+
+.custom-next {
+  right: 10px;
+}
+
+.custom-arrow:hover {
+  width: 65px;
+  height: 65px;
+  background-color: rgba(0, 0, 0, 0.7); /* Ngjyra e sfondit kur është hover */
+}
+
+.custom-arrow:before {
+  content: '';
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  padding: 5px;
+  display: inline-block;
+}
+
+.custom-prev:before {
+  transform: rotate(135deg);
+}
+
+.custom-next:before {
+  transform: rotate(-45deg);
+}
+
+#prev{
+  color: red;
+}

@@ -1,20 +1,20 @@
 import React, { useState } from 'react';
 import './HeroStyles.css';
 import { AiOutlineSearch } from 'react-icons/ai';
-import Video from '../../assets/maldivesVideo.mp4';
-import citiesData from './cities.json';
+import Video from '../../assets/background.mp4';
+import destinationsData from './destinations.json';
 
 function Hero() {
   const [searchTerm, setSearchTerm] = useState('');
-  const [filteredCities, setFilteredCities] = useState([]);
+  const [filteredDestinations, setFilteredDestinations] = useState([]);
 
   const handleSearchChange = (event) => {
     const searchTerm = event.target.value.toLowerCase();
     setSearchTerm(searchTerm);
-    const results = citiesData.cities.filter((city) =>
-      city.toLowerCase().startsWith(searchTerm)
+    const results = destinationsData.destinacionet.filter((destination) =>
+      destination.lokacioni.toLowerCase().startsWith(searchTerm)
     );
-    setFilteredCities(results);
+    setFilteredDestinations(results);
   };
 
   return (
@@ -24,7 +24,7 @@ function Hero() {
       </video>
       <div className="overlay"></div>
       <div className="content">
-        <h1>First Class Travel</h1>
+        <h1>Best Destinations In Kosova</h1>
         <form className="form">
           <div>
             <input
@@ -35,11 +35,11 @@ function Hero() {
             />
           </div>        
         </form>
-         {searchTerm && filteredCities.length > 0 && (
+         {searchTerm && filteredDestinations.length > 0 && (
           <div className="search-results"> 
           <ul>
-            {filteredCities.map((city) => (
-              <li key={city}>{city}</li>
+            {filteredDestinations.map((destination) => (
+              <li key={destination.lokacioni}>{destination.lokacioni}</li>
             ))}
           </ul>
         </div>
