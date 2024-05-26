@@ -3,7 +3,7 @@ import './HeroStyles.css';
 import { AiOutlineSearch } from 'react-icons/ai';
 import Video from '../../assets/background.mp4';
 import destinationsData from './destinations.json';
-
+import audioFile from '../../assets/birds-19624.mp3';
 
 function Hero() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -19,6 +19,7 @@ function Hero() {
   };
 
   return (
+    
     <div className="hero">
       <video autoPlay loop muted id="video">
         <source src={Video} type="video/mp4" />
@@ -46,7 +47,9 @@ function Hero() {
         </div>
         )}
       </div>
-     
+      <audio autoPlay loop muted={true}>
+                <source src={audioFile} type="audio/mp3" />
+        </audio>
     </div>
   );
 }

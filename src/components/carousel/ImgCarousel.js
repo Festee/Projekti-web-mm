@@ -2,6 +2,8 @@ import React, { useRef, useState } from "react";
 import "./ImgCarouselStyles.css";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import audioFile from '../../assets/birds-19624.mp3';
+
 
 import Rugove1 from "../../assets/Rugove1.jpg"
 import Rugove2 from "../../assets/Rugove2.jpg"
@@ -121,6 +123,9 @@ function ImgCarousel() {
       </Carousel>
       <button onClick={handlePrev} id="prev" className="custom-arrow custom-prev"></button>
       <button onClick={handleNext} className="custom-arrow custom-next"></button>
+      <audio autoPlay loop muted={true}>
+                <source src={audioFile} type="audio/mp3" />
+        </audio>
     </div>
   );
 }

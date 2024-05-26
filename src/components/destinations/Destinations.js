@@ -7,6 +7,7 @@ import BjeshkaGrebajes1 from '../../assets/BjeshkaGrebajes1.jpg';
 import Decan1 from '../../assets/Decan1.jpg';
 import Rudoke1 from '../../assets/Rudoke1.jpg'
 import Erenik1 from '../../assets/Erenik1.jpg';
+import audioFile from '../../assets/birds-19624.mp3';
 
 
 function Destinations() {
@@ -117,6 +118,9 @@ function Destinations() {
             </div>
           </div>
         </div>
+        <audio autoPlay loop muted={true}>
+                <source src={audioFile} type="audio/mp3" />
+        </audio>
       </div>
     );
 }

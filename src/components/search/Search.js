@@ -1,6 +1,8 @@
 import React from 'react'
 import './SearchStyles.css'
 import Gold from '../../assets/gold.png'
+import audioFile from '../../assets/birds-19624.mp3';
+
 
 function Search() {
   return (
@@ -60,6 +62,9 @@ function Search() {
                 </form>
             </div>
         </div>
+        <audio autoPlay loop muted={true}>
+                <source src={audioFile} type="audio/mp3" />
+        </audio>
     </div>
   )
 }

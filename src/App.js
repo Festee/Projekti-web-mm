@@ -8,8 +8,6 @@ import Selects from './components/selects/Selects';
 import ImgCarousel from './components/carousel/ImgCarousel';
 import Footer from './components/footer/Footer';
 
-
-
 function App() {
   return (
     <BrowserRouter>
@@ -53,6 +51,7 @@ function App() {
           </>
         } />
       </Routes>
+      
     </BrowserRouter>
   );
 }

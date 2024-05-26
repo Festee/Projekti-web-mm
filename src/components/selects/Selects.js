@@ -10,6 +10,9 @@ import Maldives3 from '../../assets/maldives3.jpg'
 
 import SelectsImg from '../Selectsimg/SelectsImg'
 
+import audioFile from '../../assets/birds-19624.mp3';
+
+
 
 function Selects() {
   return (
@@ -22,6 +25,9 @@ function Selects() {
             <SelectsImg bgImg={Maldives3} text='Barbados' />
             <SelectsImg bgImg={KeyWest} text='Key West' />
         </div>
+        <audio autoPlay loop muted={true}>
+                <source src={audioFile} type="audio/mp3" />
+        </audio>
     </div>
   )
 }
