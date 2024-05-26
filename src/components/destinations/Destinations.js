@@ -13,8 +13,8 @@ function Destinations() {
     return (
       <div name="destinations" className="destinations">
         <div className="container">
-          <h1>Beautiful Mountain Destinations</h1>
-          <p>Explore the Best Hiking Trails</p>
+          <h1>Destinacionet malore me te bukura</h1>
+          <p>Eksploro shtigjet e Hikingut</p>
           <div className="img-container">
             <div className="img-wrapper">
               <img src={Rugove1} alt="Rugove" />

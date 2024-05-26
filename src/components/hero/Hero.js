@@ -4,6 +4,7 @@ import { AiOutlineSearch } from 'react-icons/ai';
 import Video from '../../assets/background.mp4';
 import destinationsData from './destinations.json';
 
+
 function Hero() {
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredDestinations, setFilteredDestinations] = useState([]);
@@ -24,7 +25,7 @@ function Hero() {
       </video>
       <div className="overlay"></div>
       <div className="content">
-        <h1>Best Destinations In Kosova</h1>
+        <h1>Kërko destinacionet e ofruara nga ne</h1>
         <form className="form">
           <div>
             <input

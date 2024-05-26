@@ -1,8 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap');
+
+
+
 /* DestinationsStyles.css */
 .destinations {
     width: 100%;
     text-align: center;
     padding: 4rem 0;
+    font-family: "Poetsen One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .destinations h1 {
@@ -34,6 +41,9 @@
     flex-grow: 1;
     flex-shrink: 1;
     flex-basis: calc(33.333% - 1rem); /* Responsive basis for 3 columns with gap */
+    font-family: "Poetsen One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .img-wrapper:hover {

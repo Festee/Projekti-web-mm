@@ -11,8 +11,12 @@ import { FaLocationDot } from "react-icons/fa6";
 import { IoCall } from "react-icons/io5";
 import { TfiLayoutSlider } from "react-icons/tfi";
 import LoginModal from '../login/LogIn';
+import { Helmet } from 'react-helmet';
+
 
 function Navbar() {
+    
+    
     const [nav, setNav] = useState(false);
     const [isAudioAllowed, setIsAudioAllowed] = useState(false);
     const [isLoginOpen, setIsLoginOpen] = useState(false);
@@ -70,6 +74,7 @@ function Navbar() {
 
     return (
         <div name="home" className={nav ? "navbar navbar-bg" : "navbar"}>
+            
             <div className={nav ? "logo dark" : "logo"}>
                 <h2 style={{ color: "black" }}>
                     <RouterLink
