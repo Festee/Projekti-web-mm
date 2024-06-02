@@ -11,7 +11,15 @@ function Search() {
   const [message, setMessage] = useState("");
 
   const handleSend = () => {
-    alert("Mesazhi u dërgua! Do ju pergjigjemi permes emailit ose telefonit :)");
+  
+    if (!name || !email || !phone || !subject || !message) {
+      alert("Ju lutem plotësoni të gjitha fushat!");
+      return;
+    }
+
+   
+    alert("Mesazhi u dërgua! Do ju përgjigjemi përmes emailit ose telefonit :)");
+    
     setName("");
     setEmail("");
     setPhone("");
@@ -30,7 +38,7 @@ function Search() {
             <input
               type="text"
               className="input"
-              placeholder="Name"
+              placeholder="Name - Surname"
               required
               value={name}
               onChange={(e) => setName(e.target.value)}
