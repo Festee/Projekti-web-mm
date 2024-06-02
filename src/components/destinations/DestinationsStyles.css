@@ -99,3 +99,26 @@
         flex-basis: calc(50% - 1rem); /* Responsive basis for 2 columns with gap */
     }
 }
+
+.audio-toggle-button {
+    margin-top: 45px;
+    margin-left: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    
+  }
+  
+  .audio-toggle-button svg {
+    margin-right: 8px;
+  }
+  
+  .audio-toggle-button:hover {
+    background-color: #0056b3;
+  }

@@ -47,7 +47,6 @@ function App() {
         <Route path="/search" element={
           <>
             <Search />
-            <Footer />
           </>
         } />
       </Routes>

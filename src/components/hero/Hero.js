@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './HeroStyles.css';
-import { AiOutlineSearch } from 'react-icons/ai';
+import { AiOutlineSearch, AiOutlineAudio, AiOutlineAudioMuted } from 'react-icons/ai'; // Shtojmë ikonat
 import Video from '../../assets/background.mp4';
 import destinationsData from './destinations.json';
 import audioFile from '../../assets/birds-19624.mp3';
@@ -8,6 +8,7 @@ import audioFile from '../../assets/birds-19624.mp3';
 function Hero() {
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredDestinations, setFilteredDestinations] = useState([]);
+  const [isMuted, setIsMuted] = useState(false); // Gjendja për menaxhimin e audios
 
   const handleSearchChange = (event) => {
     const searchTerm = event.target.value.toLowerCase();
@@ -18,8 +19,11 @@ function Hero() {
     setFilteredDestinations(results);
   };
 
+  const handleAudioToggle = () => {
+    setIsMuted(!isMuted);
+  };
+
   return (
-    
     <div className="hero">
       <video autoPlay loop muted id="video">
         <source src={Video} type="video/mp4" />
@@ -29,7 +33,7 @@ function Hero() {
         <h1>Kërko destinacionet e ofruara nga ne</h1>
         <form className="form">
           <div>
-            <input
+            <input id='inp'
               type="text"
               placeholder="Search Destinations"
               value={searchTerm}
@@ -46,10 +50,14 @@ function Hero() {
           </ul>
         </div>
         )}
+        
       </div>
-      <audio autoPlay loop muted={true}>
-                <source src={audioFile} type="audio/mp3" />
-        </audio>
+      <button className="audio-toggle-button" onClick={handleAudioToggle}>
+          {isMuted ? <AiOutlineAudioMuted size={24} /> : <AiOutlineAudio size={24} />}
+        </button>
+      <audio autoPlay loop muted={isMuted}>
+        <source src={audioFile} type="audio/mp3" />
+      </audio>
     </div>
   );
 }

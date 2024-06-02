@@ -1,72 +1,78 @@
-import React from 'react'
-import './SearchStyles.css'
-import Gold from '../../assets/gold.png'
-import audioFile from '../../assets/birds-19624.mp3';
-
+import React, { useState } from "react";
+import "./SearchStyles.css";
+import Gold from "../../assets/gold.png";
+import audioFile from "../../assets/birds-19624.mp3";
 
 function Search() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [subject, setSubject] = useState("");
+  const [message, setMessage] = useState("");
+
+  const handleSend = () => {
+    alert("Mesazhi u dërgua! Do ju pergjigjemi permes emailit ose telefonit :)");
+    setName("");
+    setEmail("");
+    setPhone("");
+    setSubject("");
+    setMessage("");
+  };
+
   return (
-    <div name='book' className='search'>
-        <div className="container">
-            <div className="left">
-                <h2>LUXURY INCLUDED VACATIONS FOR 2 PEOPLE</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum perferendis, cumque quasi tempore deserunt dolorum totam pariatur voluptatibus ex eligendi, est commodi aspernatur? Laboriosam, iusto dolores animi expedita praesentium voluptates.</p>
-                <div className="search-col-2">
-                    <div className="box">
-                        <div>
-                            <img src={Gold} alt='/'style={{marginRight:'1rem'}}/>
-                        </div>
-                        <div>
-                            <h3>WORLD'S LEADING</h3>
-                            <p>ALL-INCLUSIVE COMPANY FOR 20 YEARS IN-A-ROW</p>
-                        </div>
-                    </div>
-                    <div className="box">
-                        <div>
-                            <h3>NO ONE INCLUDES MORE</h3>
-                            <p>ALL-INCLUSIVE COMPANY FOR 20 YEARS IN-A-ROW</p>
-                            <button>View Packages</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div className="right">
-                <div className="promo">
-                    <h4 className="save">GET AN ADDITIONAL 7% OFF</h4>
-                    <p className="timer">12 HOURS LEFT!</p>
-                    <p className="offers">VIEW ALL CURRENT OFFERS</p>
-                </div>
-                <form action="">
-                    <div className="input-wrap">
-                        <label htmlFor="">Destination</label>
-                        <select>
-                            <option value="1">Grand Antigua</option>
-                            <option value="1">Granada</option>
-                            <option value="1">Emerald Bay</option>
-                            <option value="1">Bora Bora</option>
-                            <option value="1">Key West</option>
-                            <option value="1">Maldives</option>
-                        </select>
-                    </div>
-                    <div className="date">
-                        <div className="input-wrap">
-                            <label>Check-In</label>
-                            <input type="date" />
-                        </div>
-                        <div className="input-wrap">
-                            <label>Check0Out</label>
-                            <input type="date" />
-                        </div>
-                    </div>
-                    <button>Rates & Availabilities</button>
-                </form>
-            </div>
+    <div name="book" className="search">
+      <div className="wrapper">
+        <div className="title">
+          <h1>Na kontaktoni !</h1>
         </div>
-        <audio autoPlay loop muted={true}>
-                <source src={audioFile} type="audio/mp3" />
-        </audio>
+        <div className="contact-form">
+          <div className="input-fields">
+            <input
+              type="text"
+              className="input"
+              placeholder="Name"
+              required
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+            <input
+              type="email"
+              className="input"
+              placeholder="Email Address"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <input
+              type="tel"
+              className="input"
+              placeholder="Phone"
+              required
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+            />
+            <input
+              type="text"
+              className="input"
+              placeholder="Subject"
+              required
+              value={subject}
+              onChange={(e) => setSubject(e.target.value)}
+            />
+          </div>
+          <div className="msg">
+            <textarea
+              placeholder="Message"
+              required
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+            />
+            <div className="btn" onClick={handleSend}>send</div>
+          </div>
+        </div>
+      </div>
     </div>
-  )
+  );
 }
 
-export default Search
+export default Search;

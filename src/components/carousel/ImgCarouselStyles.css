@@ -22,10 +22,35 @@
   display: none;
 }
 
-.custom-arrow {
-  background-color: rgba(0, 0, 0, 0.5); /* Sfondi i errët me transparencë */
+.audio-toggle-buttoni {
+  position: absolute;
+  top: 6%;
+  left: -333px; /* Vendosja në anën e majtë */
+  margin-top: 45px;
+  margin-left: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
   border: none;
-  border-radius: 50%; /* Formë rrethore */
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.audio-toggle-buttoni svg {
+  margin-right: 8px;
+}
+
+.audio-toggle-buttoni:hover {
+  background-color: #0056b3;
+}
+
+.custom-arrow {
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  border-radius: 50%;
   color: white;
   width: 50px;
   height: 50px;
@@ -51,7 +76,7 @@
 .custom-arrow:hover {
   width: 65px;
   height: 65px;
-  background-color: rgba(0, 0, 0, 0.7); /* Ngjyra e sfondit kur është hover */
+  background-color: rgba(0, 0, 0, 0.7);
 }
 
 .custom-arrow:before {
@@ -68,8 +93,4 @@
 
 .custom-next:before {
   transform: rotate(-45deg);
-}
-
-#prev{
-  color: red;
 }

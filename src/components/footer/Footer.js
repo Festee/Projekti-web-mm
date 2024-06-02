@@ -8,7 +8,7 @@ function Footer() {
         <div className='footer'>
             <div className="container">
                 <div className="top">
-                    <h3>BEACHES.</h3>
+                    <h3>NATURE.</h3>
                     <div className="social">
                         <FaFacebook className='icon' />
                         <FaInstagram className='icon' />
@@ -20,22 +20,14 @@ function Footer() {
                 <div className="bottom">
                     <div className="left">
                         <ul>
-                            <li>About</li>
-                            <li>Partnerships</li>
-                            <li>Careers</li>
-                            <li>Newsroom</li>
-                            <li>Advertising</li>
+                            <li>Home </li>
+                            <li>Destinations</li>
+                            <li>My Slider</li>
+                            <li>Contact Us</li>
+                            <li>Views</li>
                         </ul>
                     </div>
-                    <div className="right">
-                        <ul>
-                            <li>Terms</li>
-                            <li>Policy</li>
-                            <li>Privacy</li>
-                            <li>Pricing</li>
-                            
-                        </ul>
-                    </div>
+                    
                 </div>
             </div>
         </div>
