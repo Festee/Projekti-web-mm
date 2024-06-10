@@ -1,19 +1,38 @@
+.selects {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
 .selects .container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 0.5rem;
+    position: relative;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: whitesmoke; /* Background më i zbehtë */
+    z-index: 1;
 }
 
 .selects .container .selects-location {
     position: relative;
-    overflow: hidden; /* Për të fshehur tekstit që mund të përmbajë nëse ka përmasa të madhe */
+    overflow: hidden;
     cursor: pointer;
+    margin-top: 25px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
 }
 
 .selects .container .selects-location img {
-    width: 100%;
+    width: 150%; /* Zmadhoje fotot */
     height: auto;
-    transition: transform 0.3s ease; /* Tranzicioni i lëvizjes */
+    transition: transform 0.3s ease;
 }
 
 .selects .container .selects-location .overlay {
@@ -22,18 +41,15 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    opacity: 0; /* Fillimi pa shfaqur */
-    transition: opacity 0.3s ease; /* Tranzicioni i ndryshimit të pamjes */
+    opacity: 0.2;
+    transition: opacity 0.3s ease;
 }
 
 .selects .container .selects-location:hover img {
-    transform: scale(1.1); /* Zmadhoje kur jeni mbi të */
+    transform: scale(1.1);
 }
 
-.selects .container .selects-location:hover .overlay {
-    opacity: 1; /* Shfaqe overlay-in kur jeni mbi të */
-}
+
 
 @media screen and (max-width: 740px) {
     .selects .container {
