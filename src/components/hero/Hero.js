@@ -8,7 +8,7 @@ import audioFile from '../../assets/birds-19624.mp3';
 function Hero() {
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredDestinations, setFilteredDestinations] = useState([]);
-  const [isMuted, setIsMuted] = useState(false); 
+  const [isMuted, setIsMuted] = useState(false); // Gjendja për menaxhimin e audios
 
   const handleSearchChange = (event) => {
     const searchTerm = event.target.value.toLowerCase();

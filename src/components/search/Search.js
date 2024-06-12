@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import "./SearchStyles.css";
-import Gold from "../../assets/gold.png";
-import audioFile from "../../assets/birds-19624.mp3";
 
 function Search() {
   const [name, setName] = useState("");

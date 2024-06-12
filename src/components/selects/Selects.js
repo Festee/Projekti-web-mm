@@ -9,11 +9,11 @@ function Selects() {
   const pixiContainer = useRef(null);
 
   useEffect(() => {
-    // Create a new PixiJS application
+   
     const app = new PIXI.Application({ width: 900, height: 500, backgroundColor: 0x1099bb });
     pixiContainer.current.appendChild(app.view);
 
-    // Load the texture for rope.
+    
     const trailTexture = PIXI.Texture.from('https://pixijs.com/assets/trail.png');
 
     const historyX = [];
@@ -22,17 +22,17 @@ function Selects() {
     const ropeSize = 100; 
     const points = [];
 
-    // Create history array.
+    
     for (let i = 0; i < historySize; i++) {
       historyX.push(0);
       historyY.push(0);
     }
-    // Create rope points.
+   
     for (let i = 0; i < ropeSize; i++) {
       points.push(new PIXI.Point(0, 0));
     }
 
-    // Create the rope
+    
     const rope = new PIXI.SimpleRope(trailTexture, points);
     rope.blendmode = PIXI.BLEND_MODES.ADD;
     app.stage.addChild(rope);

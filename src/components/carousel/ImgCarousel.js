@@ -3,6 +3,7 @@ import "./ImgCarouselStyles.css";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { AiOutlineAudio, AiOutlineAudioMuted } from 'react-icons/ai';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 import audioFile from '../../assets/birds-19624.mp3';
 
 import Rugove1 from "../../assets/Rugove1.jpg";
@@ -73,66 +74,15 @@ function ImgCarousel() {
         selectedItem={currentIndex}
         onChange={(index) => setCurrentIndex(index)}
       >
-        <div className="slider-item">
-          <img src={Rugove1} alt="Rugove" />
-        </div>
-        <div className="slider-item">
-          <img src={Rugove2} alt="Rugove" />
-        </div>
-        <div className="slider-item">
-          <img src={Rugove3} alt="Rugove" />
-        </div>
-
-        <div className="slider-item">
-          <img src={Erenik1} alt="Erenik" />
-        </div>
-        <div className="slider-item">
-          <img src={Erenik2} alt="Erenik" />
-        </div>
-        <div className="slider-item">
-          <img src={Erenik3} alt="Erenik" />
-        </div>
-
-        <div className="slider-item">
-          <img src={Valbone1} alt="Valbone" />
-        </div>
-        <div className="slider-item">
-          <img src={Valbone2} alt="Valbone" />
-        </div>
-        <div className="slider-item">
-          <img src={Valbone3} alt="Valbone" />
-        </div>
-
-        <div className="slider-item">
-          <img src={Decan1} alt="Decan" />
-        </div>
-        <div className="slider-item">
-          <img src={Decan2} alt="Decan" />
-        </div>
-        <div className="slider-item">
-          <img src={Decan3} alt="Decan" />
-        </div>
-
-        <div className="slider-item">
-          <img src={BjeshkaGrebajes1} alt="BjeshkaGrebajes" />
-        </div>
-        <div className="slider-item">
-          <img src={BjeshkaGrebajes2} alt="BjeshkaGrebajes" />
-        </div>
-        <div className="slider-item">
-          <img src={BjeshkaGrebajes3} alt="BjeshkaGrebajes" />
-        </div>
-
-        <div className="slider-item">
-          <img src={Rudoke1} alt="Rudoke" />
-        </div>
-        <div className="slider-item">
-          <img src={Rudoke2} alt="Rudoke" />
-        </div>
-        <div className="slider-item">
-          <img src={Rudoke3} alt="Rudoke" />
-        </div>
-        
+        {[Rugove1, Rugove2, Rugove3, Erenik1, Erenik2, Erenik3, Decan1, Decan2, Decan3, Rudoke1, Rudoke2, Rudoke3, Valbone1, Valbone2, Valbone3, BjeshkaGrebajes1, BjeshkaGrebajes2, BjeshkaGrebajes3].map((image, index) => (
+          <div className="slider-item" key={index}>
+            <LazyLoadImage
+              src={image}
+              alt={`Slide ${index}`}
+              effect="blur"
+            />
+          </div>
+        ))}
       </Carousel>
       
       <button onClick={handlePrev} className="custom-arrow custom-prev"></button>
