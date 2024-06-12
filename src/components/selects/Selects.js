@@ -9,9 +9,113 @@ function Selects() {
   const pixiContainer = useRef(null);
 
   useEffect(() => {
-    const app = new PIXI.Application({ width: 900, height: 500, backgroundColor: 0xF8E4EF });
+    // Create a new PixiJS application
+    const app = new PIXI.Application({ width: 900, height: 500, backgroundColor: 0x1099bb });
     pixiContainer.current.appendChild(app.view);
 
+    // Load the texture for rope.
+    const trailTexture = PIXI.Texture.from('https://pixijs.com/assets/trail.png');
+
+    const historyX = [];
+    const historyY = [];
+    const historySize = 20; // Determines how long the trail will be.
+    const ropeSize = 100; // Determines how smooth the trail will be.
+    const points = [];
+
+    // Create history array.
+    for (let i = 0; i < historySize; i++) {
+      historyX.push(0);
+      historyY.push(0);
+    }
+    // Create rope points.
+    for (let i = 0; i < ropeSize; i++) {
+      points.push(new PIXI.Point(0, 0));
+    }
+
+    // Create the rope
+    const rope = new PIXI.SimpleRope(trailTexture, points);
+    rope.blendmode = PIXI.BLEND_MODES.ADD;
+    app.stage.addChild(rope);
+
+    let mouseposition = null;
+
+    app.stage.interactive = true;
+    app.stage.hitArea = app.screen;
+    app.stage.on('mousemove', (event) => {
+      mouseposition = mouseposition || { x: 0, y: 0 };
+      mouseposition.x = event.data.global.x;
+      mouseposition.y = event.data.global.y;
+    });
+
+    app.ticker.add(() => {
+      if (!mouseposition) return;
+
+      historyX.pop();
+      historyX.unshift(mouseposition.x);
+      historyY.pop();
+      historyY.unshift(mouseposition.y);
+
+      for (let i = 0; i < ropeSize; i++) {
+        const p = points[i];
+        const ix = cubicInterpolation(historyX, (i / ropeSize) * historySize);
+        const iy = cubicInterpolation(historyY, (i / ropeSize) * historySize);
+
+        p.x = ix;
+        p.y = iy;
+      }
+    });
+
+    function clipInput(k, arr) {
+      if (k < 0) k = 0;
+      if (k > arr.length - 1) k = arr.length - 1;
+      return arr[k];
+    }
+
+    function getTangent(k, factor, array) {
+      return (factor * (clipInput(k + 1, array) - clipInput(k - 1, array))) / 2;
+    }
+
+    function cubicInterpolation(array, t, tangentFactor = 1) {
+      const k = Math.floor(t);
+      const m = [getTangent(k, tangentFactor, array), getTangent(k + 1, tangentFactor, array)];
+      const p = [clipInput(k, array), clipInput(k + 1, array)];
+
+      t -= k;
+      const t2 = t * t;
+      const t3 = t * t2;
+
+      return (2 * t3 - 3 * t2 + 1) * p[0] + (t3 - 2 * t2 + t) * m[0] + (-2 * t3 + 3 * t2) * p[1] + (t3 - t2) * m[1];
+    }
+
+    // Load textures for the existing example
+    const texture1 = PIXI.Texture.from('https://pixijs.com/assets/flowerTop.png');
+    const texture2 = PIXI.Texture.from('https://pixijs.com/assets/eggHead.png');
+
+    let isTexture1 = true;
+
+    // Create a new Sprite using the first texture and add it to the stage
+    const character = new PIXI.Sprite(texture1);
+    character.anchor.set(0.5);
+    character.x = app.screen.width / 2;
+    character.y = app.screen.height / 2;
+    app.stage.addChild(character);
+
+    // Make the sprite interactive
+    character.interactive = true;
+    character.buttonMode = true;
+
+    // Swap textures on click
+    character.on('pointertap', () => {
+      isTexture1 = !isTexture1;
+      character.texture = isTexture1 ? texture1 : texture2;
+    });
+
+    // Rotate the sprite on each frame
+    app.ticker.add(() => {
+      character.rotation += 0.02;
+    });
+
+    // Existing functionality: Create circles with sprites and animate them
     const createCircleWithSprite = (x, y, texture, deltaX, deltaY) => {
       const graphics = new PIXI.Graphics();
       graphics.beginFill(0xff0000);
@@ -30,22 +134,14 @@ function Selects() {
       return { graphics, sprite, deltaX, deltaY };
     };
 
-    // const texture = PIXI.Texture.from(Erenik1);
-
-    // const background = new PIXI.Sprite(texture);
-    // background.width = app.screen.width;
-    // background.height = app.screen.height;
-
-    // app.stage.addChild(background);
-
-    const texture1 = PIXI.Texture.from(Rugove1);
-    const texture2 = PIXI.Texture.from(Erenik1);
-    const texture3 = PIXI.Texture.from(Erenik2);
+    const localTexture1 = PIXI.Texture.from(Rugove1);
+    const localTexture2 = PIXI.Texture.from(Erenik1);
+    const localTexture3 = PIXI.Texture.from(Erenik2);
 
     const objects = [
-      createCircleWithSprite(app.screen.width / 4, app.screen.height / 2, texture1, 1, 1),
-      createCircleWithSprite(app.screen.width / 2, app.screen.height / 2, texture2, -1, 1),
-      createCircleWithSprite((app.screen.width / 4) * 3, app.screen.height / 2, texture3, 1, -1),
+      createCircleWithSprite(app.screen.width / 4, app.screen.height / 2, localTexture1, 1, 1),
+      createCircleWithSprite(app.screen.width / 2, app.screen.height / 2, localTexture2, -1, 1),
+      createCircleWithSprite((app.screen.width / 4) * 3, app.screen.height / 2, localTexture3, 1, -1),
     ];
 
     objects.forEach(({ graphics, sprite }) => {
@@ -62,7 +158,7 @@ function Selects() {
         sprite.x += deltaX;
         sprite.y += deltaY;
 
-        // Krijo një efekt gradienti për ngjyrën e rrethit
+        // Create a gradient effect for the circle color
         const colorChange = (Math.sin(graphics.x * 0.01) + Math.cos(graphics.y * 0.01)) * Math.PI;
         const color = PIXI.utils.rgb2hex([Math.sin(colorChange), Math.cos(colorChange), Math.sin(colorChange + Math.PI / 2)]);
         graphics.clear();
