@@ -89,7 +89,7 @@ function Selects() {
       <div className="container">
         <div className="selects-location">
           <div ref={pixiContainer}></div>
-          <div className="overlay"></div>
+          <div className="overlay2"></div>
         </div>
       </div>
     </div>
