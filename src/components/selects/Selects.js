@@ -18,8 +18,8 @@ function Selects() {
 
     const historyX = [];
     const historyY = [];
-    const historySize = 20; // Determines how long the trail will be.
-    const ropeSize = 100; // Determines how smooth the trail will be.
+    const historySize = 20; 
+    const ropeSize = 100; 
     const points = [];
 
     // Create history array.
@@ -93,29 +93,24 @@ function Selects() {
 
     let isTexture1 = true;
 
-    // Create a new Sprite using the first texture and add it to the stage
-    const character = new PIXI.Sprite(texture1);
+   const character = new PIXI.Sprite(texture1);
     character.anchor.set(0.5);
     character.x = app.screen.width / 2;
     character.y = app.screen.height / 2;
     app.stage.addChild(character);
 
-    // Make the sprite interactive
     character.interactive = true;
     character.buttonMode = true;
 
-    // Swap textures on click
     character.on('pointertap', () => {
       isTexture1 = !isTexture1;
       character.texture = isTexture1 ? texture1 : texture2;
     });
 
-    // Rotate the sprite on each frame
     app.ticker.add(() => {
       character.rotation += 0.02;
     });
 
-    // Existing functionality: Create circles with sprites and animate them
     const createCircleWithSprite = (x, y, texture, deltaX, deltaY) => {
       const graphics = new PIXI.Graphics();
       graphics.beginFill(0xff0000);
@@ -158,7 +153,6 @@ function Selects() {
         sprite.x += deltaX;
         sprite.y += deltaY;
 
-        // Create a gradient effect for the circle color
         const colorChange = (Math.sin(graphics.x * 0.01) + Math.cos(graphics.y * 0.01)) * Math.PI;
         const color = PIXI.utils.rgb2hex([Math.sin(colorChange), Math.cos(colorChange), Math.sin(colorChange + Math.PI / 2)]);
         graphics.clear();
