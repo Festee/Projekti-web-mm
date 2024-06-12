@@ -78,12 +78,7 @@
 
 
 
-@media screen and (max-width: 940px) {
-    .form input[type=text] {
-        max-width: 275px;
-    }
 
-}
 
 .search-results {
     position: relative; /* Change from absolute to relative */
